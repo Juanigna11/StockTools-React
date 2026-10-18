@@ -1,0 +1,313 @@
+/* ===== Reset ===== */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== Variables ===== */
+:root{
+  --dark:#22262b;
+  --dark-2:#2c3138;
+  --steel:#555c66;
+  --paper:#eef0ea;
+  --paper-2:#ffffff;
+  --green:#7cbf3f;
+  --green-deep:#487926;
+  --yellow:#fbff00;
+  --text:#23262b;
+  --text-soft:#5b5f66;
+  --display:'Big Shoulders Display', sans-serif;
+  --body:'Work Sans', sans-serif;
+  --mono:'IBM Plex Mono', monospace;
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+  --max-width:1100px;
+  --header-h: 58px;   /* alto fijo del header en TODAS las páginas */
+}
+
+body{
+    background-color: var(--paper);
+    color: var(--text);
+    line-height:1.6;
+    font-family: var(--display);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* En React todo se dibuja adentro de <div id="root">,
+   así que el "sticky footer" ahora va en #root y no en body */
+#root{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* main ocupa todo el ancho y empuja el footer hacia abajo */
+main{
+    flex: 1;
+    width: 100%;
+}
+
+h1,h2,h3{
+    font-family:var(--display);
+    letter-spacing:.2px;
+    margin:0 0 .4rem;
+    color: var(--paper);
+}
+
+h4{
+    color: var(--dark-2);
+    font-family: var(--display);
+    font-size: 20px;
+}
+
+img{
+    max-width: 100%;
+    display: block;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+ul{
+    list-style: none;
+}
+
+/* ===== Contenedor reutilizable ===== */
+.wrap {
+  max-width:1180px;
+  margin:0 auto;
+  padding:0 24px;
+}
+
+/* ===== Etiqueta chica sobre los títulos ===== */
+.eyebrow{
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: .8rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--green-deep);
+    margin-bottom: .6rem;
+}
+
+/* ===== Botones reutilizables ===== */
+.btn {
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    font-family: var(--body);
+    font-weight: 600;
+    font-size: .95rem;
+    padding: 14px 28px;
+    border-radius: var(--radius-sm);
+    transition: transform .18s ease, background .18s ease;
+}
+
+.btn:hover{
+    transform: translateY(-2px);
+}
+
+.btn-accent {
+    background: var(--green);
+    color: #12210a;
+}
+
+.btn-light {
+    background: var(--paper-2);
+    color: var(--dark);
+}
+
+/* ===== Header ===== */
+header{
+    background-color: var(--dark);
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--max-width);
+    height: var(--header-h);
+    margin: 0 auto;
+    gap: 1rem;
+}
+
+.logo img{
+    height: 42px;
+    width: auto;
+}
+
+.nav-links{
+    display: flex;
+    gap:1.8rem;
+    margin-left: auto;   /* empuja los links (y el botón) a la derecha */
+}
+
+.nav-links a{
+    font-weight: 600;
+    color: var(--paper-2);
+    transition: color 0.2s;
+}
+
+.nav-links a:hover, .footer-nav a:hover, .footer-social a:hover{
+    color: var(--green);
+}
+
+/* NavLink le agrega la clase "active" al link de la página actual */
+.nav-links a.active{
+    color: var(--green);
+}
+
+/* Botón del carrito en el header */
+.btn-carrito-header{
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--paper-2);
+  cursor: pointer;
+  transition: color .2s, background-color .2s;
+}
+
+.btn-carrito-header:hover{
+  color: var(--green);
+  background: var(--dark-2);
+}
+
+/* Globito con la cantidad de unidades */
+.carrito-contador{
+  position: absolute;
+  top: -2px;
+  right: -4px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 10px;
+  background: var(--green);
+  color: var(--dark);
+  font-family: var(--body);
+  font-size: .72rem;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: center;
+}
+
+/* El atributo hidden tiene que ganarle al display de arriba */
+.carrito-contador[hidden]{
+  display: none;
+}
+
+.iniciar-sesion{
+  background:var(--green);
+  color:#fff;
+  border:none;
+  border-radius: 40px;
+  padding: 8px 20px;
+  font-family: var(--body);
+  font-weight:600;
+  cursor:pointer;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.iniciar-sesion:hover{
+  background:var(--green-deep);
+  transform: scale(1.05);
+}
+
+/* ===== Footer ===== */
+footer{
+    background-color: var(--dark-2);
+    color: var(--paper-2);
+    text-align: center;
+    padding: 2.5rem 1rem;
+    margin-top: auto;
+}
+
+.footer-nav{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.footer-nav a, .footer-social a{
+    transition: color 0.2s;
+}
+
+.footer-social{
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    margin-top: 1rem;
+    font-size: 2rem;
+}
+
+/* ===== Utilidades de página ===== */
+.page-title{
+    text-align: center;
+    font-size: 3rem;
+    margin: 2rem;
+    color: var(--dark-2);
+}
+
+.main-section{
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1rem 2rem 3rem;
+}
+
+@media(max-width: 768px){
+    header{
+        padding: .75rem 1rem;
+    }
+    /* En celular: logo + botón arriba, links abajo a todo el ancho */
+    .navbar{
+        height: auto;
+        flex-wrap: wrap;
+        row-gap: .5rem;
+    }
+    .logo img{
+        height: 36px;
+    }
+    .btn-carrito-header{
+        margin-left: auto;   /* carrito + botón a la derecha del logo */
+    }
+    .nav-links{
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        gap: 1.1rem;
+        margin-left: 0;
+    }
+}
+
+/* ===== Página 404 ===== */
+.no-encontrada{
+    padding: 96px 24px;
+    text-align: center;
+}
+
+.no-encontrada h1{
+    color: var(--dark);
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    line-height: 1.05;
+}
+
+.no-encontrada p{
+    font-family: var(--body);
+    color: var(--text-soft);
+    margin-bottom: 1.5rem;
+}
