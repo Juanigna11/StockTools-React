@@ -2,6 +2,8 @@ import { Outlet } from "react-router"
 import Navbar from "./Navbar.jsx"
 import Footer from "./Footer.jsx"
 import ScrollToTop from "./ScrollToTop.jsx"
+import CartDrawer from "./CartDrawer.jsx"
+import AvisoCarrito from "./AvisoCarrito.jsx"
 
 // Antes: el mismo <header> y <footer> copiados en 4 archivos HTML.
 // Ahora: se escriben UNA vez acá, y <Outlet /> es el "hueco"
@@ -15,6 +17,10 @@ export default function Layout() {
         <Outlet />
       </main>
       <Footer />
+
+      {/* Están en el Layout para que existan en todas las páginas */}
+      <CartDrawer />
+      <AvisoCarrito />
     </>
   )
 }

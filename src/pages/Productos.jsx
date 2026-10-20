@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router"
 import { productos } from "../data/productos.js"
-import { formatearPrecio } from "../utils/precios.js"
+import ProductGrid from "../components/ProductGrid.jsx"
 import "../styles/pages/productos.css"
 
 // Pasa a minúsculas y saca acentos: "medicion" encuentra "Medición"
@@ -15,6 +15,7 @@ export default function Productos() {
 
   function cambiarBusqueda(evento) {
     const texto = evento.target.value
+    console.log("búsqueda:", texto)
     // replace: true → no llena el historial con una entrada por cada letra
     setSearchParams(texto ? { q: texto } : {}, { replace: true })
   }
@@ -50,18 +51,8 @@ export default function Productos() {
           </div>
         </div>
 
-        {/* ⚠️ TEMPORAL: en el paso 4 esta lista se reemplaza por <ProductGrid /> con las cards */}
-        {filtrados.length === 0 ? (
-          <p className="sin-resultados">No se encontraron productos.</p>
-        ) : (
-          <ul className="lista-temporal">
-            {filtrados.map((p) => (
-              <li key={p.id}>
-                <strong>{p.nombre}</strong> · {p.marca} · {formatearPrecio(p.precio)}
-              </li>
-            ))}
-          </ul>
-        )}
+        {/* La grilla recibe la lista ya filtrada como prop */}
+        <ProductGrid productos={filtrados} />
       </div>
     </>
   )

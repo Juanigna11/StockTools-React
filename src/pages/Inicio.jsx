@@ -2,6 +2,8 @@ import { useState } from "react"
 import { Link, useNavigate } from "react-router"
 import { productos } from "../data/productos.js"
 import { marcas } from "../data/marcas.js"
+import ProductGrid from "../components/ProductGrid.jsx"
+import { useCarrito } from "../hooks/useCarrito.js"
 import { formatearPrecio, porcentajeDescuento } from "../utils/precios.js"
 import "../styles/pages/hero.css"
 import "../styles/pages/hero2.css"
@@ -47,6 +49,9 @@ const oferta = productos
   .filter((p) => p.precioAnterior)
   .sort((a, b) => porcentajeDescuento(b) - porcentajeDescuento(a))[0]
 
+// Destacados: los productos marcados con destacado: true
+const destacados = productos.filter((p) => p.destacado)
+
 const contarPorCategoria = (categoria) =>
   productos.filter((p) => p.categoria === categoria).length
 
@@ -56,9 +61,11 @@ export default function Inicio() {
   // Cada vez que cambia, React vuelve a dibujar el componente.
   const [busqueda, setBusqueda] = useState("")
   const navigate = useNavigate()
+  const { agregar } = useCarrito()
 
   function buscar(evento) {
     evento.preventDefault()   // evita que el form recargue la página
+    console.log("submit buscador:", busqueda)
     navigate(`/productos?q=${encodeURIComponent(busqueda.trim())}`)
   }
 
@@ -87,7 +94,10 @@ export default function Inicio() {
                 placeholder="Buscar taladros, tornillos, sierras…"
                 aria-label="Buscar productos"
                 value={busqueda}
-                onChange={(e) => setBusqueda(e.target.value)}
+                onChange={(e) => {
+                  console.log("input:", e.target.value)
+                  setBusqueda(e.target.value)
+                }}
               />
               <button type="submit">Buscar</button>
             </form>
@@ -120,10 +130,9 @@ export default function Inicio() {
                 <span className="off">{porcentajeDescuento(oferta)}% OFF</span>
               </div>
               <p className="oferta-precio">{formatearPrecio(oferta.precio)}</p>
-              {/* Paso 5: este botón va a agregar al carrito */}
-              <Link to={`/productos?q=${encodeURIComponent(oferta.marca)}`} className="btn btn-accent">
-                Ver oferta
-              </Link>
+              <button className="btn btn-accent" onClick={() => agregar(oferta, 1)}>
+                Agregar al carrito
+              </button>
             </aside>
           )}
         </div>
@@ -169,7 +178,19 @@ export default function Inicio() {
         </div>
       </section>
 
-      {/* 4. Destacados → Paso 4: acá va <ProductGrid productos={destacados} /> */}
+      {/* 4. Destacados: la MISMA grilla que en Productos, con otra lista */}
+      <section className="ini-seccion ini-destacados">
+        <div className="wrap">
+          <div className="ini-encabezado">
+            <div>
+              <span className="eyebrow">Destacados</span>
+              <h2 className="ini-titulo">Los que más salen del mostrador</h2>
+            </div>
+            <Link to="/productos" className="ini-ver-todo">Ver todos los productos →</Link>
+          </div>
+          <ProductGrid productos={destacados} />
+        </div>
+      </section>
 
       {/* 5. Mayoristas */}
       <section className="mayoristas">
@@ -184,9 +205,10 @@ export default function Inicio() {
           </div>
           <div className="quote-card">
             <p>
-              "Desde que compramos con Stock Tools, nunca más nos quedamos sin esos consumibles que nos hacen la caja dia a dia. La reposición llega antes de que se note el faltante."
+              "Desde que compramos con Stock Tools nunca más nos quedamos sin mecha ni disco de
+              corte. La reposición llega antes de que se note el faltante."
             </p>
-            <span>— Ferretería Bertora, Córdoba</span>
+            <span>— Ferretería El Tornillo Feliz, Córdoba</span>
           </div>
         </div>
       </section>

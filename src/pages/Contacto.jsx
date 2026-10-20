@@ -13,6 +13,8 @@ export default function Contacto() {
 
   function enviar(evento) {
     evento.preventDefault()
+    const datos = Object.fromEntries(new FormData(evento.target))
+    console.log("submit contacto:", datos)
     // Más adelante acá se mandarían los datos a un servidor (fetch).
     setEnviado(true)
     evento.target.reset()   // limpia los campos
@@ -31,15 +33,15 @@ export default function Contacto() {
             </p>
 
             <form className="contact-form" onSubmit={enviar}>
-              <div className="form-row">
-                <input type="text" placeholder="Nombre de la ferretería" required />
-                <input type="text" placeholder="Tu nombre" required />
-              </div>
-              <div className="form-row">
-                <input type="email" placeholder="Email" required />
-                <input type="tel" placeholder="Teléfono / WhatsApp" />
-              </div>
-              <textarea placeholder="¿Qué productos estás buscando?" rows="4"></textarea>
+             <div className="form-row">
+  <input name="ferreteria" type="text" placeholder="Nombre de la ferretería" required />
+  <input name="nombre" type="text" placeholder="Tu nombre" required />
+</div>
+<div className="form-row">
+  <input name="email" type="email" placeholder="Email" required />
+  <input name="telefono" type="tel" placeholder="Teléfono / WhatsApp" />
+</div>
+<textarea name="mensaje" placeholder="¿Qué productos estás buscando?" rows="4"></textarea>
               <button type="submit" className="btn btn-accent">Enviar consulta</button>
 
               {/* Renderizado condicional: solo aparece si enviado es true */}
