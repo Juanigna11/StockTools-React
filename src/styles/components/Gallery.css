@@ -1,0 +1,60 @@
+/* =====================================================
+   Gallery.css — estilos de <Gallery />.
+   Lo importa el propio componente.
+   ===================================================== */
+
+.gallery{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.gallery-item{
+    position: relative;          /* para ubicar el epígrafe encima de la imagen */
+    flex: 1 1 220px;
+    height: 220px;
+    margin: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--paper-2);
+}
+
+.gallery-item img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .3s;
+}
+
+/* Epígrafe: aparece desde abajo al pasar el mouse */
+.gallery-item figcaption{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 10px 14px;
+    background: linear-gradient(transparent, rgba(34, 38, 43, .85));
+    color: var(--paper-2);
+    font-family: var(--body);
+    font-size: .85rem;
+    font-weight: 500;
+    transform: translateY(100%);
+    transition: transform .25s ease;
+}
+
+.gallery-item:hover img{
+    transform: scale(1.04);
+}
+
+.gallery-item:hover figcaption,
+.gallery-item:focus-within figcaption{
+    transform: translateY(0);
+}
+
+/* En pantallas táctiles no hay "hover": el epígrafe queda siempre visible */
+@media (hover: none){
+    .gallery-item figcaption{
+        transform: translateY(0);
+    }
+}

@@ -1,5 +1,6 @@
 import { Link } from "react-router"
 import { marcas } from "../data/marcas.js"
+import Gallery from "../components/Gallery.jsx"
 import "../styles/pages/nosotros.css"
 
 // ===== Datos de la página =====
@@ -142,11 +143,8 @@ export default function Nosotros() {
         <div className="wrap">
           <span className="eyebrow">Catálogo</span>
           <h2 className="nos-titulo">Parte de lo que tenemos en stock</h2>
-          <div className="gallery">
-            {galeria.map((img) => (
-              <img className="gallery-item" key={img.src} src={img.src} alt={img.alt} loading="lazy" />
-            ))}
-          </div>
+          {/* La galería ahora es un componente: le pasamos la lista por props */}
+          <Gallery imagenes={galeria} />
         </div>
       </section>
 

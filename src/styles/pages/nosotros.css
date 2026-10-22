@@ -250,27 +250,6 @@
     color: var(--green);
 }
 
-/* ===== 5. Galería ===== */
-.gallery{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.gallery-item{
-    flex: 1 1 220px;
-    height: 220px;
-    object-fit: cover;
-    border-radius: 8px;
-    background: var(--paper-2);
-    transition: transform .3s;
-}
-
-.gallery-item:hover{
-    transform: scale(1.03);
-}
-
 /* ===== 6. Llamado a la acción ===== */
 .nos-cta{
     background: var(--green);
