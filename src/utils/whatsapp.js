@@ -14,5 +14,7 @@ export function crearLinkWhatsapp(items, total) {
     "",
     `Total: ${formatearPrecio(total)}`,
   ].join("\n")
-  return `https://wa.me/${TELEFONO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`
+  // wa.me necesita el número SOLO con dígitos (sin +, espacios ni guiones)
+  const numero = TELEFONO_WHATSAPP.replace(/\D/g, "")
+  return `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`
 }

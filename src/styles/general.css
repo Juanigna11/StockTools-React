@@ -311,3 +311,18 @@ footer{
     color: var(--text-soft);
     margin-bottom: 1.5rem;
 }
+
+/* ===== Accesibilidad =====
+   Oculta un elemento a la vista pero lo deja para los lectores de pantalla
+   (por ejemplo, los <label> del formulario, que visualmente se ven como placeholder). */
+.visualmente-oculto{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}

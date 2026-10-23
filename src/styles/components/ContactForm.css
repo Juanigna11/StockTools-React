@@ -1,0 +1,81 @@
+/* =====================================================
+   ContactForm.css — estilos de <ContactForm />.
+   ===================================================== */
+
+.contact-form {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.form-row {
+    display: flex;
+    gap: 14px;
+}
+
+.campo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid rgba(34, 38, 43, .15);
+    border-radius: var(--radius-sm);
+    font-family: var(--body);
+    font-size: .92rem;
+    background: #fff;
+    resize: vertical;
+    transition: border-color .2s, box-shadow .2s;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+    outline: none;
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(124, 191, 63, .2);
+}
+
+/* Campo con error: aria-invalid lo pone React cuando hay un error */
+.contact-form [aria-invalid="true"] {
+    border-color: #c0392b;
+    box-shadow: 0 0 0 3px rgba(192, 57, 43, .12);
+}
+
+.contact-form .campo-error {
+    font-family: var(--body);
+    font-size: .8rem;
+    color: #b3261e;
+}
+
+.campo-contador {
+    align-self: flex-end;
+    font-family: var(--mono);
+    font-size: .72rem;
+    color: var(--steel);
+}
+
+.contact-form .campo-nota {
+    font-family: var(--body);
+    font-size: .78rem;
+    color: var(--steel);
+    margin-top: -6px;
+}
+
+.contact-form .form-ok {
+    font-family: var(--body);
+    font-weight: 600;
+    color: var(--green-deep);
+    background: #eef6e4;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+}
+
+@media (max-width: 900px) {
+    .form-row {
+        flex-direction: column;
+    }
+}

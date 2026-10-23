@@ -23,29 +23,6 @@
     margin-top: -8px;
 }
 
-.contact-form {
-    margin-top: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-}
-
-.form-row {
-    display: flex;
-    gap: 14px;
-}
-
-.contact-form input, .contact-form textarea {
-    width: 100%;
-    padding: 14px 16px;
-    border: 1px solid rgba(34, 38, 43, .15);
-    border-radius: var(--radius-sm);
-    font-family: var(--body);
-    font-size: .92rem;
-    background: #fff;
-    resize: vertical;
-}
-
 .contact-info {
     display: flex;
     flex-direction: column;
@@ -71,16 +48,4 @@
     .contact-info{
         padding-top: 0;
     }
-    .form-row{
-        flex-direction: column;
-    }
-}
-
-.form-ok {
-    font-family: var(--body);
-    font-weight: 600;
-    color: var(--green-deep);
-    background: #eef6e4;
-    padding: 12px 16px;
-    border-radius: var(--radius-sm);
 }

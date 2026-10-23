@@ -72,6 +72,7 @@ Después abrir en el navegador la dirección que muestra la terminal (por defect
 | `ProductCard` | Card de producto: cuotas, etiqueta, favorito, precio con descuento, precio sin impuestos, chips de envío/stock, selector de cantidad y botón para agregar al carrito | `producto`, `esFavorito`, `onToggleFavorito` |
 | `ProductGrid` | Grilla de `ProductCard`. Guarda qué productos son favoritos | `productos` |
 | `Gallery` | Galería de imágenes con epígrafe | `imagenes` (array de `{ src, alt }`) |
+| `ContactForm` | Formulario de contacto con inputs controlados (`useState`), validación propia con mensajes de error, contador de caracteres y confirmación de envío | — |
 | `CartDrawer` | Panel lateral del carrito (`<dialog>`): cantidades, total, vaciar y pedido por WhatsApp | — |
 | `AvisoCarrito` | Aviso flotante al agregar un producto | — |
 | `ScrollToTop` | Vuelve al principio de la página al cambiar de ruta | — |
@@ -89,14 +90,19 @@ Los textos de la navegación, el catálogo y las marcas están separados en `src
   - contador en el header, panel lateral, sumar / restar / quitar / vaciar;
   - se guarda en `localStorage` (sobrevive a recargas) y se sincroniza entre pestañas;
   - **envío del pedido por WhatsApp** con el detalle y el total.
-- **Formulario de contacto** con `useState`, validación nativa (`required`, `type="email"`) y mensaje de confirmación.
+- **Formulario de contacto** con **inputs controlados**: cada campo guarda su valor en el estado con `useState` (`value` + `onChange`). Incluye:
+  - validación propia con mensajes en español (campos obligatorios, formato de email, largo mínimo del teléfono y del mensaje);
+  - el error de cada campo se borra mientras el usuario lo corrige;
+  - contador de caracteres del mensaje;
+  - mensaje de confirmación y limpieza del formulario al enviar;
+  - `<label>` asociado a cada campo y `aria-invalid` para lectores de pantalla.
 - **Diseño responsive** (celular, tablet y escritorio).
 
 ### Hooks de React utilizados
 
 | Hook | Dónde | Para qué |
 |---|---|---|
-| `useState` | `Inicio`, `Contacto`, `ProductCard`, `ProductGrid`, `CarritoProvider` | Buscador, formulario, cantidades, favoritos y carrito |
+| `useState` | `Inicio`, `ContactForm`, `ProductCard`, `ProductGrid`, `CarritoProvider` | Buscador, formulario, cantidades, favoritos y carrito |
 | `useEffect` | `CarritoProvider`, `ProductCard`, `CartDrawer`, `ScrollToTop` | Guardar en `localStorage`, temporizadores, abrir/cerrar el `<dialog>`, scroll |
 | `useContext` | `useCarrito` (hook propio) | Leer el carrito desde cualquier componente |
 | `useRef` | `CartDrawer` | Acceder al elemento `<dialog>` del DOM |
