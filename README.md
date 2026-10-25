@@ -1,7 +1,7 @@
 # StockTools — Tienda de herramientas para ferreterías
 
-Sitio web de **StockTools**, un distribuidor de herramientas, fijaciones e insumos para ferreterías y corralones.
-El proyecto es la **migración a React** de un sitio originalmente hecho en HTML, CSS y JavaScript, como Trabajo Práctico Integrador del Módulo 3 (React) de la cursada de Front End de la **UTN – Centro de e-Learning**.
+Sitio web de **StockTools**, un distribuidor de herramientas e insumos para ferreterías y corralones.
+El proyecto es la **migración a React** de un sitio originalmente hecho en HTML, CSS y JavaScript.
 
 > Los productos, precios, estadísticas y testimonios del sitio son datos de ejemplo.
 
@@ -16,37 +16,6 @@ El proyecto es la **migración a React** de un sitio originalmente hecho en HTML
 | [React Router](https://reactrouter.com/) | 8 | Navegación entre páginas (SPA) |
 | CSS propio | — | Estilos, sin frameworks |
 | `localStorage` | — | Guardar el carrito en el navegador |
-
-> **Nota sobre React Router:** la consigna pide la v6. Se usó la v8 (la versión actual al crear el proyecto), que mantiene la misma API de rutas: `<BrowserRouter>`, `<Routes>`, `<Route>`, `<Link>`, `<NavLink>`, `<Outlet>`, `useNavigate` y `useSearchParams`. La única diferencia práctica es que se importa desde `"react-router"` en lugar de `"react-router-dom"`.
-
----
-
-## Cómo correr el proyecto
-
-**Requisito:** tener instalado [Node.js](https://nodejs.org/) 22.22 o superior (`node -v` para verificar).
-
-```bash
-# 1. Clonar el repositorio
-git clone https://github.com/Juanigna11/StockTools-React.git
-cd StockTools-React
-
-# 2. Instalar las dependencias
-npm install
-
-# 3. Levantar el servidor de desarrollo
-npm run dev
-```
-
-Después abrir en el navegador la dirección que muestra la terminal (por defecto `http://localhost:5173`).
-
-### Otros comandos
-
-| Comando | Qué hace |
-|---|---|
-| `npm run dev` | Servidor de desarrollo con recarga automática |
-| `npm run build` | Genera la versión final optimizada en la carpeta `dist/` |
-| `npm run preview` | Sirve la carpeta `dist/` para probar el build |
-| `npm run lint` | Revisa el código con ESLint |
 
 ---
 
@@ -131,7 +100,7 @@ StockTools-React/
 └── vite.config.js
 ```
 
----
+
 
 ## Versión anterior
 
@@ -139,4 +108,4 @@ La versión original en HTML, CSS y JavaScript está en [Juanigna11/StockTools](
 
 ---
 
-Desarrollado por [@Juanigna11](https://github.com/Juanigna11) — UTN, Front End con React, 2026.
+Desarrollado por [@Juanigna11](https://github.com/Juanigna11) 
